@@ -4,12 +4,14 @@
 # KULLANILAN DİL: R
 # ==============================================================================
 
+Sys.setlocale("LC_ALL", "Turkish")
+
 install.packages("wordcloud2")
 install.packages("ggwordcloud")
 library(ggwordcloud)
 
-
-# 1. KÜTÜPHANELERİN YÜKLENMESİ (Eğer yüklü değilse install.packages() ile kurunuz)
+# ------------------------------------------------------------------------------
+# KÜTÜPHANELERİN YÜKLENMESİ (Eğer yüklü değilse install.packages() ile kurunuz)
 # ------------------------------------------------------------------------------
 library(tidyverse)   # Veri manipülasyonu ve grafikler (dplyr, ggplot2 vs.)
 library(readr)       # CSV dosyasını okumak için
@@ -17,9 +19,9 @@ library(tidytext)    # Metin (açık uçlu soru) analizi için
 library(wordcloud2)  # Kelime bulutu oluşturmak için
 library(RColorBrewer) # Profesyonel renk paletleri
 
-# 2. VERİNİN YÜKLENMESİ VE SÜTUN İSİMLERİNİN TEMİZLENMESİ
 # ------------------------------------------------------------------------------
-# Brutal Not: Google Forms sütun isimleri analiz için bir kabustur. 
+# VERİNİN YÜKLENMESİ VE SÜTUN İSİMLERİNİN TEMİZLENMESİ
+# ------------------------------------------------------------------------------
 # Önce bu isimleri teknik ve kısa değişken isimlerine dönüştürüyoruz.
 
 # Dosya adını tam olarak buraya yaz (Çalışma dizininde olduğundan emin ol)
@@ -30,7 +32,7 @@ df_raw <- read_excel("anket verisi.xlsx")
 # VERİYİ YÜKLE
 df <- read_excel("anket verisi.xlsx")
 
-# TÜM STRATEJİK SÜTUNLARIN İSİMLENDİRİLMESİ (Eksiksiz Liste)
+# TÜM STRATEJİK SÜTUNLARIN İSİMLENDİRİLMESİ
 names(df)[2]  <- "sorun_kritikligi"
 names(df)[6]  <- "cilt_tipi_gunes"
 names(df)[7]  <- "kullanim_sikligi"
@@ -60,15 +62,11 @@ df <- df %>% mutate(sorun_kritikligi = as.numeric(sorun_kritikligi))
 # Veri Hazirligi: Sorun kritikligini sayisala cevir
 df <- df %>% mutate(sorun_kritikligi = as.numeric(sorun_kritikligi))
 
-# ==============================================================================
+# ------------------------------------------------------------------------------
 # A. CARESIIZLIK VS. BEKLENTI MATRISI (KUTU GRAFIGI + NOKTA DAGILIMI)
-# ==============================================================================
+# ------------------------------------------------------------------------------
 
-# ==============================================================================
-# A. CARESIIZLIK VS. BEKLENTI MATRISI (KUTU GRAFIGI + NOKTA DAGILIMI)
-# ==============================================================================
-
-# A1. GUNES KREMI (DÜZELTİLMİŞ)
+# A1. GUNES KREMI 
 grafik_A_gunes <- df %>%
   filter(!is.na(satinalma_onceligi_gunes) & !is.na(sorun_kritikligi)) %>%
   ggplot(aes(x = satinalma_onceligi_gunes, y = sorun_kritikligi, fill = satinalma_onceligi_gunes)) +
@@ -81,22 +79,23 @@ grafik_A_gunes <- df %>%
   
   theme_minimal() +
   labs(
-    title = "Gunes Kremi: Caresizlik vs Beklenti",
-    subtitle = "Gunes koruma ihtiyacinin siddeti (1-10) ile satin alma motivasyonunun kesismesi",
-    x = "Satin Alma Icin Yeterli Gorulen Sonuc",
-    y = "Sorun Kritikligi (1 = Dusuk, 10 = Acil)"
+    title = "Güneş Kremi: Çaresizlik vs Beklenti",
+    subtitle = "Güneş koruma ihtiyacının şiddeti (1-10) ile satın alma motivasyonunun kesişmesi",
+    x = "Satın Alma İçin Yeterli Görülen Sonuç",
+    y = "Sorun Kritikliği (1 = Düşük, 10 = Acil)"
   ) +
-  # AÇI MÜDAHALESİ: 15 değil, keskin 45 derece ve hizalama (hjust = 1)
+  
+  # AÇI MÜDAHALESİ: keskin 45 derece ve hizalama (hjust = 1)
   theme(
     legend.position = "none", 
     axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, lineheight = 0.8)
   )
 
 print(grafik_A_gunes)
-ggsave("A1_Gunes_Caresizlik_Beklenti_Duzeltilmis.png", plot = grafik_A_gunes, width = 15, height = 10, bg = "white")
+ggsave("A1_Gunes_Caresizlik_Beklenti_Duzeltilmis.png", plot = grafik_A_gunes, width = 15, height = 10, bg = "white", type = "cairo")
 
 
-# A2. SAMPUAN (DÜZELTİLMİŞ)
+# A2. SAMPUAN
 grafik_A_sampuan <- df %>%
   filter(!is.na(satinalma_onceligi_sampuan) & !is.na(sorun_kritikligi)) %>%
   ggplot(aes(x = satinalma_onceligi_sampuan, y = sorun_kritikligi, fill = satinalma_onceligi_sampuan)) +
@@ -109,11 +108,12 @@ grafik_A_sampuan <- df %>%
   
   theme_minimal() +
   labs(
-    title = "Sampuan: Caresizlik vs Beklenti",
-    subtitle = "Kepek sorununun siddeti (1-10) ile satin alma motivasyonunun kesismesi",
-    x = "Satin Alma Icin Yeterli Gorulen Sonuc",
-    y = "Sorun Kritikligi (1 = Dusuk, 10 = Acil)"
+    title = "Şampuan: Çaresizlik vs Beklenti",
+    subtitle = "Kepek sorununun şiddeti (1-10) ile satın alma motivasyonunun kesişmesi",
+    x = "Satın Alma İçin Yeterli Görülen Sonuç",
+    y = "Sorun Kritikliği (1 = Düşük, 10 = Acil)"
   ) +
+  
   # AÇI MÜDAHALESİ: 15 değil, keskin 45 derece ve hizalama (hjust = 1)
   theme(
     legend.position = "none", 
@@ -121,24 +121,23 @@ grafik_A_sampuan <- df %>%
   )
 
 print(grafik_A_sampuan)
-ggsave("A2_Sampuan_Caresizlik_Beklenti_Duzeltilmis.png", plot = grafik_A_sampuan, width = 15, height = 10, bg = "white")
+ggsave("A2_Sampuan_Caresizlik_Beklenti_Duzeltilmis.png", plot = grafik_A_sampuan, width = 15, height = 10, bg = "white", type = "cairo")
 
-# ==============================================================================
+# ------------------------------------------------------------------------------
 # B. MARKA KONUMLANDIRMA VE ALGI UYUSMAZLIGI (YIGILMIS CUBUK)
-# ==============================================================================
+# ------------------------------------------------------------------------------
 
-# B1. GUNES KREMI
-# B1. GUNES KREMI: Koku Algisi ve Satis Kanali (KONSOLİDE VE İLLÜZYONU YIKILMIŞ VERİ)
+# B1. GUNES KREMI: Koku Algisi ve Satis Kanali 
 grafik_B_gunes <- df %>%
   filter(!is.na(koku_cagrisimi_gunes) & !is.na(satis_kanali_guveni_gunes)) %>%
   
-  # 1. ÇÖP VERİ FİLTRESİ: Analizi bozan "Emin değilim" vb. yanıtları temizle
+  # ÇÖP VERİ FİLTRESİ: Analizi bozan "Emin değilim" vb. yanıtları temizle
   filter(
     !str_detect(str_to_lower(koku_cagrisimi_gunes), "tester|kullanmadım") &
-      !str_detect(str_to_lower(satis_kanali_guveni_sampuan), "tester|kullanmadım|emin değilim")
+      !str_detect(str_to_lower(satis_kanali_guveni_gunes), "tester|kullanmadım|emin değilim")
   ) %>%
   
-  # 2. STRATEJİK KONSOLİDASYON: Birbirinin aynısı olan yanıtları tek çatı altında topla
+  # STRATEJİK KONSOLİDASYON: Birbirinin aynısı olan yanıtları tek çatı altında topla
   mutate(
     satis_kanali_guveni_gunes = case_when(
       str_detect(str_to_lower(satis_kanali_guveni_gunes), "eczane") ~ "Eczane (Konsolide)",
@@ -150,22 +149,22 @@ grafik_B_gunes <- df %>%
   ggplot(aes(x = koku_cagrisimi_gunes, fill = satis_kanali_guveni_gunes)) +
   geom_bar(position = "fill", alpha = 0.9) +
   
-  # 3. İLLÜZYON YIKICI: Sütunların içine gerçek kişi sayısını (N) yaz
+  # İLLÜZYON YIKICI: Sütunların içine gerçek kişi sayısını (N) yaz
   geom_text(stat = "count", aes(label = after_stat(count)), position = position_fill(vjust = 0.5), color = "white", fontface = "bold", size = 5) +
   
   scale_y_continuous(labels = scales::percent_format()) +
   
-  # 4. METİN KAYDIRMA (WRAP): Uzun cümleleri kırarak grafiğin ezilmesini engelle
+  # METİN KAYDIRMA (WRAP): Uzun cümleleri kırarak grafiğin ezilmesini engelle
   scale_fill_brewer(palette = "Paired", labels = function(x) stringr::str_wrap(x, width = 30)) +
   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 20)) +
   
   theme_minimal() +
   labs(
-    title = "Gunes Kremi: Koku Algisi ve Guvenilir Satis Kanali",
+    title = "Güneş Kremi: Koku Algısı ve Güvenilir Satış Kanalı",
     subtitle = "Formulasyon algisi ile pazarlama kanalinin bilissel uyumu (Konsolide Veri)",
-    x = "Kokunun Tuketici Zihnindeki Cagrisimi",
-    y = "Oransal Dagilim",
-    fill = "Guven Duyulan Satis Kanali"
+    x = "Kokunun Tüketici Zihnindeki Çağrışımı",
+    y = "Oransal Dağılım",
+    fill = "Güven Duyulan Satış Kanalı"
   ) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, lineheight = 0.8),
@@ -174,20 +173,20 @@ grafik_B_gunes <- df %>%
 
 print(grafik_B_gunes)
 
-ggsave("B1_Gunes_Koku_Kanal_Konsolide.png", plot = grafik_B_gunes, width = 11, height = 7, bg = "white")
+ggsave("B1_Gunes_Koku_Kanal_Konsolide.png", plot = grafik_B_gunes, width = 11, height = 7, bg = "white", type = "cairo")
 
-# B2. SAMPUAN
+
 # B2. SAMPUAN: Koku Algisi ve Satis Kanali (KONSOLİDE EDİLMİŞ VERİ)
 grafik_B_sampuan <- df %>%
   filter(!is.na(koku_cagrisimi_sampuan) & !is.na(satis_kanali_guveni_sampuan)) %>%
   
-  # 1. ÇÖP VERİ FİLTRESİ: Analizi bozan yanıtları temizle
+  # ÇÖP VERİ FİLTRESİ: Analizi bozan yanıtları temizle
   filter(
     !str_detect(str_to_lower(koku_cagrisimi_sampuan), "tester|kullanmadım") &
       !str_detect(str_to_lower(satis_kanali_guveni_sampuan), "tester|kullanmadım")
   ) %>%
   
-  # 2. STRATEJİK KONSOLİDASYON: İçinde "eczane" geçen tüm dağınık yanıtları TEK TİP yap.
+  # STRATEJİK KONSOLİDASYON: İçinde "eczane" geçen tüm dağınık yanıtları TEK TİP yap.
   mutate(
     satis_kanali_guveni_sampuan = case_when(
       str_detect(str_to_lower(satis_kanali_guveni_sampuan), "eczane") ~ "Eczane (Konsolide)",
@@ -199,20 +198,20 @@ grafik_B_sampuan <- df %>%
   ggplot(aes(x = koku_cagrisimi_sampuan, fill = satis_kanali_guveni_sampuan)) +
   geom_bar(position = "fill", alpha = 0.9) +
   # Çubukların içine KİŞİ SAYISINI (n) yazar. İllüzyonu yıkar.
-  geom_text(stat = "count", aes(label Z= after_stat(count)), position = position_fill(vjust = 0.5), color = "white", fontface = "bold", size = 5) +
+  geom_text(stat = "count", aes(label = after_stat(count)), position = position_fill(vjust = 0.5), color = "white", fontface = "bold", size = 5) +
   scale_y_continuous(labels = scales::percent_format()) +
   
-  # Lejantı ve renkleri yeniden düzenle (Artık çok daha az renk olacak)
+  # Lejantı ve renkleri yeniden düzenle 
   scale_fill_brewer(palette = "Set1", labels = function(x) stringr::str_wrap(x, width = 30)) +
   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 20)) +
   
   theme_minimal() +
   labs(
-    title = "Sampuan: Koku Algisi ve Guvenilir Satis Kanali Iliskisi",
-    subtitle = "Formulasyon algisi ile pazarlama kanalinin bilissel uyumu (Konsolide Veri)",
-    x = "Kokunun Tuketici Zihnindeki Cagrisimi",
-    y = "Oransal Dagilim",
-    fill = "Guven Duyulan Satis Kanali"
+    title = "Şampuan: Koku Algısı ve Güvenilir Satış Kanalı İişkisi",
+    subtitle = "Formulasyon algısı ile pazarlama kanalının bilişsel uyumu (Konsolide Veri)",
+    x = "Kokunun Tüketici Zihnindeki Çağrışımı",
+    y = "Oransal Dağılım",
+    fill = "Güven Duyulan Satış Kanalı"
   ) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, lineheight = 0.8),
@@ -221,12 +220,12 @@ grafik_B_sampuan <- df %>%
 
 print(grafik_B_sampuan)
 
-ggsave("B2_Sampuan_Koku_Kanal_Konsolide.png", plot = grafik_B_sampuan, width = 10, height = 6, bg = "white")
+ggsave("B2_Sampuan_Koku_Kanal_Konsolide.png", plot = grafik_B_sampuan, width = 10, height = 6, bg = "white", type = "cairo")
 
 
-# ==============================================================================
+# ------------------------------------------------------------------------------
 # C. RUTIN VE TOLERANS ANALIZI (FACET WRAP)
-# ==============================================================================
+# ------------------------------------------------------------------------------
 
 # C1. GUNES KREMI (Kullanim Sikligi vs. Ciltte Agirlik/Puturlesme)
 grafik_C_gunes <- df %>%
@@ -237,26 +236,58 @@ grafik_C_gunes <- df %>%
   scale_fill_viridis_d() +
   theme_minimal() +
   labs(
-    title = "Gunes Kremi: Kullanim Rutini ve Formule Tolerans",
-    subtitle = "Urunu tazeleme sikligina gore ciltte agirlik/puturlesme reaksiyonlari",
-    x = "Ust Uste Binme / Agirlik Hissi Reaksiyonu",
-    y = "Kisi Sayisi"
+    title = "Güneş Kremi: Kullanım Rutini ve Formule Tolerans",
+    subtitle = "Ürünü tazeleme sıklığına göre ciltte ağırlık/pütürleşme reaksiyonları",
+    x = "Üst üste Binme / Ağırlıkk Hissi Reaksiyonu",
+    y = "Kişi Sayısı"
   ) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 print(grafik_C_gunes)
 
-ggsave("C1_Gunes_Rutin_Tolerans.png", plot = grafik_C_gunes, width = 9, height = 6, bg = "white")
-
-# C2. SAMPUAN (Yaglanma Hizi [Kullanim Proxy'si] vs. Sac Kremi Ihtiyaci)
+ggsave("C1_Gunes_Rutin_Tolerans.png", plot = grafik_C_gunes, width = 9, height = 6, bg = "white", type = "cairo")
 
 
-# ==============================================================================
-# 5. NITEL VERI ANALIZI: METIN MADENCILIGI VE KELIME BULUTU
-# ==============================================================================
-# Eger paket yuklu degilse kaldirin: install.packages("ggwordcloud")
-# 0. RSTUDIO'NUN BEYNİNİ TÜRKÇEYE ZORLA (Kırmızı hataları bitirir)
-Sys.setlocale("LC_ALL", "Turkish")
+# C2. ŞAMPUAN (Yağlanma Hızı vs. Saç Kremi İhtiyacı) - CROSS SELL KANITI
+grafik_C_sampuan <- df %>%
+  # TEMİZLİK: NA değerleri ele
+  filter(!is.na(yaglanma_hizi) & !is.na(sac_kremi_ihtiyaci)) %>%
+  
+  # "Tester", "Kullanmadım", "Bilmiyorum" gibi yanıtları grafikten at
+  filter(!str_detect(str_to_lower(sac_kremi_ihtiyaci, locale = "tr"), "tester|kullanmadım|bilmiyorum")) %>%
+  filter(!str_detect(str_to_lower(yaglanma_hizi, locale = "tr"), "tester|kullanmadım|bilmiyorum")) %>%
+  
+  ggplot(aes(x = sac_kremi_ihtiyaci, fill = sac_kremi_ihtiyaci)) +
+  geom_bar(show.legend = FALSE) +
+  facet_wrap(~yaglanma_hizi) +
+  scale_fill_viridis_d(option = "magma") +
+  
+  # ESTETİK MÜDAHALE: Paragrafları 15 karakterde bir alt satıra kır (İllüzyonu yok et)
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 15)) +
+  
+  theme_minimal() +
+  labs(
+    title = "Şampuan: Yağlanma Hızı ve Saç Kremi İhtiyacı",
+    subtitle = "Kullanım frekansına göre tamamlayıcı ürün (cross-sell) gereksinimi",
+    x = "Saç Kremi İhtiyacı (Kuruluk/Sertlik Reaksiyonu)",
+    y = "Kişi Sayısı"
+  ) +
+  theme(
+    # Metinler kırıldığı için açıyı 45 derecede tutmak artık çok daha şık ve okunabilir duracak
+    axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, lineheight = 0.8, size = 9),
+    # Facet (Kategori) başlıklarını kalınlaştırarak hiyerarşiyi vurgula
+    strip.text = element_text(face = "bold", size = 10)
+  )
+
+print(grafik_C_sampuan)
+
+ggsave("C2_Sampuan_Rutin_Tolerans.png", plot = grafik_C_sampuan, width = 12, height = 8, bg = "white", type = "cairo")
+
+# ------------------------------------------------------------------------------
+# D. NITEL VERI ANALIZI: METIN MADENCILIGI VE KELIME BULUTU
+# ------------------------------------------------------------------------------
+
+# RSTUDIO'NUN BEYNİNİ TÜRKÇEYE ZORLA (Kırmızı hataları bitirir)
 
 library(tidytext)
 library(ggwordcloud)
@@ -266,7 +297,7 @@ library(stringr)
 if(exists("metin_verisi")) rm(metin_verisi)
 if(exists("grafik_kelime")) rm(grafik_kelime)
 
-# 1. KESİN RED LİSTESİ (TÜRKÇE KARAKTERLERLE)
+# KESİN RED LİSTESİ (TÜRKÇE KARAKTERLERLE)
 copluk_kelimeler <- c(
   "için", "çok", "daha", "gibi", "ile", "ama", "göre", 
   "kadar", "olan", "yok", "olsa", "olurdu", "evet", "hayır", 
@@ -283,7 +314,7 @@ copluk_kelimeler <- c(
   "kokusu", "kokuları", "problemim"
 )
 
-# 2. METİN İŞLEME VE FİLTRELEME
+# METİN İŞLEME VE FİLTRELEME
 acik_uclu_sutunlar <- c(15, 16, 17, 18, 19, 20, 25, 26, 30, 31, 32, 33, 34)
 
 metin_verisi <- df %>%
@@ -307,7 +338,7 @@ metin_verisi <- df %>%
   count(word, sort = TRUE) %>%
   filter(n > 1) 
 
-# 3. KELİME BULUTU ÇİZİMİ
+# KELİME BULUTU ÇİZİMİ
 if(nrow(metin_verisi) > 0) {
   grafik_kelime <- ggplot(metin_verisi, aes(label = word, size = n, color = n)) +
     geom_text_wordcloud_area(shape = "circle", rm_outside = TRUE, show.legend = TRUE) +
@@ -315,15 +346,15 @@ if(nrow(metin_verisi) > 0) {
     scale_color_gradient(low = "#34495e", high = "#c0392b", name = "Tekrar Sayısı") + 
     theme_minimal() +
     labs(
-      title = "Tuketici Beklentileri ve Marka Algisi: Meta-Temalar",
-      subtitle = "Acik uclu yanitlarin (N=13) rafine metin madenciligi analizi",
+      title = "Tüketici Beklentileri ve Marka Algısı: Meta-Temalar",
+      subtitle = "Açık uçlu yanıtların (N=13) rafine metin madenciliği analizi",
       caption = "Not: Sadece birden fazla tekrar eden anahtar kelimeler gorsellestirilmistir."
     ) +
     theme(legend.position = "right")
   
   print(grafik_kelime)
   # DOSYAYA KAYDET (Masaüstündeki bu dosyayı aç, RStudio'daki küçük ekrana aldanma)
-  ggsave("Grafik5_Kelime_Bulutu_Turkce_Final.png", plot = grafik_kelime, width = 10, height = 7, bg = "white")
+  ggsave("Grafik5_Kelime_Bulutu_Turkce_Final.png", plot = grafik_kelime, width = 10, height = 7, bg = "white", type = "cairo")
   message("Grafik başarıyla 'Grafik5_Kelime_Bulutu_Turkce_Final.png' adıyla kaydedildi.")
 } else {
   message("BRUTAL UYARI: Filtrelemelerden sonra ortak kelime kalmadi.")
