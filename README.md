@@ -1,4 +1,4 @@
-# Brand-x Phase-0: Consumer Insight & Product-Market Fit Analysis 🔬📊
+# Brand-x Phase-0: Consumer Insight & Product-Market Fit Analysis 📊
 
 **Bağımsız Araştırmacı:** Fatma Tosun  
 **Kapsam:** Brand-X Face Sunscreen SPF50 ve Anti-Dandruff Şampuan  
@@ -25,23 +25,27 @@ Anket yoluyla elde edilen karmaşık ve yapılandırılmamış (unstructured) t�
 Tüketiciler, formülün kokusunu "Premium" veya "İlaç" olarak algıladıklarında ürünü şaşmaz bir şekilde **Eczane** rafında görmek istemektedir. Ancak koku "Yaz/Plaj" hissi verdiğinde ürünün algılanan değeri düşmekte ve süpermarket (FMCG) beklentisi doğmaktadır.
 *(Dermokozmetik kâr marjını korumak için plaj kokularından acilen uzaklaşılmalıdır.)*
 
-<img width="4500" height="3000" alt="A1_Gunes_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/2f1b4c92-c6c2-437b-b2f5-36ec9c6e32c7" />
+<img width="4500" height="3000" alt="A1_Gunes_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/c937878f-42be-4e5d-96f2-b6ff3d46deaf" />
+
 
 ### 2. Tüketici Psikolojisi: Medikal Kuruluk vs. Kozmetik Tatmin
 Kepek sorununu 10/10 şiddetinde (en çaresiz seviyede) yaşayan hastalar dahi, satın alma kararı için sadece klinik tedavi değil; "saçta yarattığı hacim ve parlaklık" gibi kozmetik tatminler aramaktadır. 
 
-<img width="4500" height="3000" alt="A2_Sampuan_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/d736d31d-10db-48b1-b0eb-35ce1788c18c" />
+<img width="4500" height="3000" alt="A2_Sampuan_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/378fce32-b8c0-4dab-a8ca-bbde762c3081" />
+
 
 ### 3. AR-GE Toleransı ve Çapraz Satış (Cross-Sell) Fırsatı
 * **Başarı:** Güneş kreminde yüksek kullanım frekansında dahi üst üste binme (pilling) ve kusma yaşanmamıştır. Polimer bariyer teknolojisi pazar için rekabetçi bir avantajdır.
 * **Kriz ve Fırsat:** Şampuanın kepek çözümü saç tellerini kurutmakta ve tüketiciyi rakip markaların saç kremlerine itmektedir. Brand-X markalı tamamlayıcı bir saç kremi/serumu derhal AR-GE hattına alınmalıdır.
 
-> <img width="963" height="791" alt="Rplot01" src="https://github.com/user-attachments/assets/2b17e1f0-a267-4cea-87a1-1f58cc61aebc" />
+<img width="963" height="791" alt="Rplot01" src="https://github.com/user-attachments/assets/47a2e64e-0c0f-4bc8-9f0d-cf13aac00235" />
+
 
 ### 4. Metin Madenciliği: Kararı "Duyu" Verir
 Açık uçlu tüketici beyanlarından oluşturulan kelime bulutunda kimyasal içerikler değil; **"KOKU, ECZANE, PARFÜM, GÜNLÜK, HAFİF"** kelimeleri merkeze oturmuştur. Tüketici eczanenin klinik otoritesini istemekte, ancak ürünü kullanırken kendisini "hasta" gibi hissettirmeyecek ferah bir duyusal deneyim satın almaktadır.
 
-> <img width="3000" height="2100" alt="Grafik5_Kelime_Bulutu_Turkce_Final" src="https://github.com/user-attachments/assets/2258c3ca-fe52-412e-856b-f41e69bb02a1" />
+<img width="3000" height="2100" alt="Grafik5_Kelime_Bulutu_Turkce_Final" src="https://github.com/user-attachments/assets/d92445c5-3ac5-44bc-a4ca-ff0b5dd8a144" />
+
 
 ---
 *Disclaimer: Bu repository'deki veri setleri ve marka bilgileri gizlilik (NDA) kapsamında anonimleştirilmiş veya temsilidir. Yalnızca analitik metodolojiyi sergilemek amacıyla paylaşılmıştır.*
