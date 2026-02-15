@@ -25,26 +25,29 @@ Anket yoluyla elde edilen karmaşık ve yapılandırılmamış (unstructured) t�
 Tüketiciler, formülün kokusunu "Premium" veya "İlaç" olarak algıladıklarında ürünü şaşmaz bir şekilde **Eczane** rafında görmek istemektedir. Ancak koku "Yaz/Plaj" hissi verdiğinde ürünün algılanan değeri düşmekte ve süpermarket (FMCG) beklentisi doğmaktadır.
 *(Dermokozmetik kâr marjını korumak için plaj kokularından acilen uzaklaşılmalıdır.)*
 
-<img width="4500" height="3000" alt="A1_Gunes_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/c937878f-42be-4e5d-96f2-b6ff3d46deaf" />
+
+<img width="4500" height="3000" alt="A1_Gunes_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/7473ea2e-041e-469a-97b1-8827e2cc401b" />
 
 
 ### 2. Tüketici Psikolojisi: Medikal Kuruluk vs. Kozmetik Tatmin
 Kepek sorununu 10/10 şiddetinde (en çaresiz seviyede) yaşayan hastalar dahi, satın alma kararı için sadece klinik tedavi değil; "saçta yarattığı hacim ve parlaklık" gibi kozmetik tatminler aramaktadır. 
 
-<img width="4500" height="3000" alt="A2_Sampuan_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/378fce32-b8c0-4dab-a8ca-bbde762c3081" />
+
+<img width="4500" height="3000" alt="A2_Sampuan_Caresizlik_Beklenti_Duzeltilmis" src="https://github.com/user-attachments/assets/0afe8f18-0049-49d8-97cf-2d00e77fd61d" />
 
 
 ### 3. AR-GE Toleransı ve Çapraz Satış (Cross-Sell) Fırsatı
 * **Başarı:** Güneş kreminde yüksek kullanım frekansında dahi üst üste binme (pilling) ve kusma yaşanmamıştır. Polimer bariyer teknolojisi pazar için rekabetçi bir avantajdır.
 * **Kriz ve Fırsat:** Şampuanın kepek çözümü saç tellerini kurutmakta ve tüketiciyi rakip markaların saç kremlerine itmektedir. Brand-X markalı tamamlayıcı bir saç kremi/serumu derhal AR-GE hattına alınmalıdır.
 
-<img width="963" height="791" alt="Rplot01" src="https://github.com/user-attachments/assets/47a2e64e-0c0f-4bc8-9f0d-cf13aac00235" />
+
+<img width="3000" height="1800" alt="B2_Sampuan_Koku_Kanal_Konsolide" src="https://github.com/user-attachments/assets/1623b5a1-0b57-43db-8daa-866da162dc63" />
 
 
 ### 4. Metin Madenciliği: Kararı "Duyu" Verir
 Açık uçlu tüketici beyanlarından oluşturulan kelime bulutunda kimyasal içerikler değil; **"KOKU, ECZANE, PARFÜM, GÜNLÜK, HAFİF"** kelimeleri merkeze oturmuştur. Tüketici eczanenin klinik otoritesini istemekte, ancak ürünü kullanırken kendisini "hasta" gibi hissettirmeyecek ferah bir duyusal deneyim satın almaktadır.
 
-<img width="3000" height="2100" alt="Grafik5_Kelime_Bulutu_Turkce_Final" src="https://github.com/user-attachments/assets/d92445c5-3ac5-44bc-a4ca-ff0b5dd8a144" />
+<img width="3000" height="2100" alt="Grafik5_Kelime_Bulutu_Turkce_Final" src="https://github.com/user-attachments/assets/720eefdb-83ac-4f44-abc6-026788ecc85a" />
 
 
 ---
